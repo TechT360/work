@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block the_content %}
+<h3>The links below says more about me:</h3>
+	<a href="/cv"> CV </a>
+<p>
+	<a href="/personalpage"> Personal Page </a>
+<p>
+	<a href="/computer"> Computers </a>
+<p>
+	<a href="/interest"> Interests </a>
+
+	<p>
+		<form method="POST" action="/comments">
+			Email: <input type="TEXT" name="Email"><br>
+			<p>
+			Comments: <input type="TEXT" name="comments"><br>
+			<p> 
+			<input type="SUBMIT" value="submit"><br>
+		</form>
+	</p>
+	
+		
+	{% endblock %}
