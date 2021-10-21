@@ -1,70 +1,44 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template
 import datetime
 
 app = Flask(__name__)
 
 
-@app.route("/")
-def display_home():
-    return render_template(
-        "home.html",
-        the_title="Home page",
-        the_opening_title="Welcome to Terry's Webpage",
-    )
+@app.get("/")  # HTTP request:   GET  /
+def index():
+    return render_template("index.html",
+                           title="Welcome!",
+                           heading="Tell us about yourself",)
 
 
-@app.route("/personalpage")
-def display_personalpage():
-    return render_template(
-        "personalpage.html",
-        the_title="My personal page",
-        the_opening_title="Welcome to Terry's Personal page",
-    )
+@app.get("/showform")
+def display_form():
+    """
+        Retrieve the form.html file from the hard disk, and send it to the
+        browser.
+    """
+    return render_template("form.html",
+                           title="Welcome Form",
+                           heading="Please fill in this form",)
 
 
-@app.route("/cv")
-def display_cv():
-    return render_template(
-        "cv.html", the_title="My CV page", the_opening_title="This is Terry's CV page"
-    )
+@app.post("/processform")
+def save_data():
+    """
+        Receive the data from the HTML form, then save it to a disk file, then respond
+        with a nice friendly message to the awaiting browser.
+
+        The following inputs are expected: first, last, and dob.
+    """
+    # python-name = html-name:
+    the_first = request.form["first"]
+    the_last = request.form["last"] 
+    the_dob = request.form["dob"] 
+    # So... now, use the python-names in your code:
+    with open("suckers.txt", "a") as sf:
+        print(f"{the_first}, {the_last}, {the_dob}", file=sf)
+    return f"Thanks, {the_first}, we promise not to sell your data to the bad guys."    
 
 
-@app.route("/interest")
-def display_interest():
-    return render_template(
-        "interest.html",
-        the_title="My interests page",
-        the_opening_title="Terry's Interests",
-    )
-
-
-@app.route("/computers")
-def display_computer():
-    return render_template(
-        "computers.html",
-        the_title="My computer technology page",
-        the_opening_title="Computers",
-    )
-
-
-@app.route("/comments", methods=["POST"])
-def display_comments():
-    data = request.form
-    save_data(data)
-    return render_template(
-        "thanks.html",
-        the_title="Thank you!",
-        the_opening_title="Thanks for you data",
-        the_name=data["email"],
-    )
-
-
-@app.route("/showdata")
-def display_all_visitors():
-    data = get_data()
-    return render_template(
-        "visitors.html",
-        the_title="List of Visitors",
-        the_opening_title="List of visitors",
-        the_data=data,
-    )
+if __name__ == "__main__":
+    app.run(debug=True)
