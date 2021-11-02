@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block the_content %}
+<fieldset class="form">
+    <form action="/processform" method="POST">
+    <p>
+    <form action=" /processform" method="POST">
+			Name: <input type="TEXT" name="Name"><br>
+			<p>
+			Email: <input type="TEXT" name="Email"><br>
+			<p>
+			Comments: <input type="TEXT" name="Comments"><br>
+			<p> 
+			<input type="SUBMIT" value="submit"/>
+			<input type="reset" value="Clear" />
+			<a href="/"><input type="button" value="back" /></a>
+            </p>
+		</form>
+        </fieldset>
+        <hr>
+		Copyright (c) Terry Agabi 2021
+        {% endblock %}
