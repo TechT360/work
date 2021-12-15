@@ -67,8 +67,8 @@ def display_form():
 def get_latest_comments():
     with DBcm.UseDatabase(config) as db:
         SQL = """
-            select Name,Email,Comments,
-            from comments order by Email desc
+            select Name, Email, Comments, Time
+            from comments order by Time desc
             limit 10
         """
         db.execute(SQL)
@@ -85,6 +85,7 @@ def save_date():
     Name = request.form["Name"]
     Email = request.form["Email"]
     Comments = request.form["Comments"]
+
     with DBcm.UseDatabase(config) as db:
         SQL = """
             insert into comments
@@ -97,7 +98,7 @@ def save_date():
     
     return render_template(
         "Comments.html",
-        name=Name,
+        Name=Name,
         Email=Email,
         Commnets=Comments,
         heading="we promise not to sell your data to bad guys",

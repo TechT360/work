@@ -1,13 +1,28 @@
 {% extends "base.html" %} 
 
-{% block body %}
+{% block the_content %}
+<p>
+	<a href = "/" > Home </a>
+<p>
+	<a href="/cv"> CV </a>
+<p>
+	<a href="/personalpage"> Personal Page </a>
+<p>
+	<a href="/computer"> Computers </a>
+<p>
+	<a href="/interest"> Interests </a>
+<p>
+	<a href="/visitors"> Visitors </a>
+	<p>
 <fieldset>
 <table>
     <thead>
     <tr>
+        <th>id</th>
         <th>Name</th>
         <th>Email</th>
         <th>Comments</th>
+        <th>Time</th>
       </tr>
     </thead>
     <tbody>
@@ -22,4 +37,5 @@
     </tbody>
   </table>
 </fieldset>
+Copyright (c) Terry Agabi 2021
 {% endblock %}
