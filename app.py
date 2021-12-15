@@ -1,7 +1,15 @@
 from flask import Flask, request, render_template
-import datetime
 
 app = Flask(__name__)
+
+import DBcm
+
+config = {
+    "host": "127.0.0.1",
+    "database": "visitors",
+    "user": "user",
+    "password": "visitor",
+}
 
 
 @app.get("/")  # HTTP request:   GET  /
@@ -55,6 +63,21 @@ def display_form():
         "form.html", title="Feedback Form", heading="Please fill in this form"
     )
 
+@app.get("/visitors")
+def get_latest_comments():
+    with DBcm.UseDatabase(config) as db:
+        SQL = """
+            select Name,Email,Comments,
+            from comments order by Email desc
+            limit 10
+        """
+        db.execute(SQL)
+        data = db.fetchall()
+    return render_template(
+        "visitors.html", data=data, heading="Comments from the visitors.",
+    )
+
+
 
 @app.post("/processform")
 def save_date():
@@ -62,12 +85,21 @@ def save_date():
     Name = request.form["Name"]
     Email = request.form["Email"]
     Comments = request.form["Comments"]
-    # So... now, use the python-names in your code:
-    with open("Comments.txt", "a") as sf:
-        print(f"{Name}, {Email}, {Comments}", file=sf)
+    with DBcm.UseDatabase(config) as db:
+        SQL = """
+            insert into comments
+            (Name, Email, Comments)
+            values
+            ( %s, %s, %s )
+        """
+        db.execute(SQL, (Name, Email, Comments))
+  
+    
     return render_template(
         "Comments.html",
         name=Name,
+        Email=Email,
+        Commnets=Comments,
         heading="we promise not to sell your data to bad guys",
     )
 
