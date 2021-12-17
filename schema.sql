@@ -31,12 +31,13 @@ DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(16) NOT NULL AUTO_INCREMENT,
   `Name` varchar(64) NOT NULL,
-  `Email` varchar(64) NOT NULL,
-  `Comments` varchar(64) NOT NULL,
+  `Email` varchar(200) NOT NULL,
+  `Comments` varchar(200) NOT NULL,
+  `Time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +46,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'visitors','visitors@gmail.com','testing');
+INSERT INTO `comments` VALUES (1,'John','john@gmail.com','here i am','2021-12-15 15:07:37'),(2,'john','john@gmail.com','here i am','2021-12-15 15:09:12'),(3,'john','john@gmail.com','here i am','2021-12-15 15:10:30'),(4,'john','john@gmail.com','please work','2021-12-15 15:11:53'),(5,'carlow','carlow@gmail.com','it works','2021-12-15 15:17:05');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-15 14:34:46
+-- Dump completed on 2021-12-16 19:07:49

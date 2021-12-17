@@ -63,6 +63,7 @@ def display_form():
         "form.html", title="Feedback Form", heading="Please fill in this form"
     )
 
+
 @app.get("/visitors")
 def get_latest_comments():
     with DBcm.UseDatabase(config) as db:
@@ -74,9 +75,8 @@ def get_latest_comments():
         db.execute(SQL)
         data = db.fetchall()
     return render_template(
-        "visitors.html", data=data, heading="Comments from the visitors.",
+        "visitors.html", data=data, heading="Comments from the visitors."
     )
-
 
 
 @app.post("/processform")
@@ -94,8 +94,7 @@ def save_date():
             ( %s, %s, %s )
         """
         db.execute(SQL, (Name, Email, Comments))
-  
-    
+
     return render_template(
         "Comments.html",
         Name=Name,

@@ -1,0 +1,48 @@
+body
+{
+color:;
+}
+
+h1
+{
+color: #333;
+font-family: verdana;
+text-align: center;
+
+}
+
+ul {
+list-style-type: none;
+margin: 30;
+padding: 0;
+overflow: hidden;
+background-color: #333;
+
+}
+
+li {
+display: inline;
+float: left;
+}
+li a
+{
+display: block;
+padding: 10px;
+background-color: #333;
+padding: 10px 10px;
+text-decoration: none;
+
+}
+a
+{
+color: rgb(182, 12, 12);
+}
+
+.active
+{
+background-color: #fdfdfd;
+}
+li a:hover:not(.active)
+{
+  background-color: #111;
+}
