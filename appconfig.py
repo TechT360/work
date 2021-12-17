@@ -13,8 +13,8 @@ if where == -1:
 else:
     # Local.
     config = {
-        "host": "c00241029.mysql.pythonanywhere-services.com",
-        "database": "c00241029$visitors",
-        "user": "c00241029",
+        "host": "cc00241029.mysql.pythonanywhere-services.com",
+        "database": "cc00241029$default",
+        "user": "cc00241029",
         "password": "visitors",
     }

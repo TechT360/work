@@ -3,13 +3,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 import DBcm
-
-config = {
-    "host": "127.0.0.1",
-    "database": "visitors",
-    "user": "user",
-    "password": "visitor",
-}
+from appconfig import config
 
 
 @app.get("/")  # HTTP request:   GET  /

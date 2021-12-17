@@ -1,0 +1,33 @@
+sudo mysql
+
+show datbases;
+
+create datbases visitors;
+
+show datbases;
+
+grant all on visitors. * to 'user' identified by 'visitor';
+
+quit
+
+mysql -u user -p visitors
+
+show tables;
+
+CREATE TABLE `comments` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(64) NOT NULL,
+  `Email` varchar(200) NOT NULL,
+  `Comments` varchar(200) NOT NULL,
+  `Time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+);
+
+show tables;
+
+describe comments;
+
+INSERT INTO comments (Name, Email, Comments) values ('John','john@gmail.com','here i am')
+
+select * from comments;
+

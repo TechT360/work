@@ -1,0 +1,6 @@
+config = {
+    "host": "cc00241029.mysql.pythonanywhere-services.com",
+    "database": "cc00241029$default",
+    "user": "cc00241029",
+    "password": "visitors",
+}
