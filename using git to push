@@ -1,0 +1,7 @@
+create repository
+git init 
+git add .
+git commit -m "any comments"
+git remote add origin http://repository copied link should be pasted here
+git push -u origin main
+enter your username and enter personal token link as password
